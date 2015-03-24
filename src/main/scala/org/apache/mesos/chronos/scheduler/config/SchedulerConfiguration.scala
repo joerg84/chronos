@@ -108,6 +108,17 @@ trait SchedulerConfiguration extends ScallopConf {
     descr = "Reconciliation interval in seconds",
     default = Some(600))
 
+  lazy val mesosAuthenticationPrincipal = opt[String]("mesos_authentication_principal",
+    descr = "Mesos Authentication Principal",
+    noshort = true
+  )
+
+  lazy val mesosAuthenticationSecretFile = opt[String]("mesos_authentication_secret_file",
+    descr = "Mesos Authentication Secret",
+    noshort = true
+  )
+
+
   def zooKeeperHostAddresses: Seq[InetSocketAddress] =
     for (s <- zookeeperServers().split(",")) yield {
       val splits = s.split(":")
